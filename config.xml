@@ -1,14 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.waecresultscenter.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.waecresultscenter.app" version="1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>WaecResultsCenter</name>
     <description>
-         A app top buy scratch cards and check wassce results instantly.
+         A mobile app top buy WAEC scratch cards and GES Placement cards and check wassce results instantly.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-         WAEC CENTER
+    <author email="richardneaverscoy@gmail.com" href="#">
+         WAEC RESULTS CHECKER
     </author>
     <plugin name="org.apache.cordova.inappbrowser" source="npm" />
-    <plugin name="com.darktalker.cordova.screenshot" spec="0.1.0" source="pgb" />
     <preference name="CrosswalkAnimatable" value="true" />
     <content src="index.html" />
     <icon src="www/icon.png"/>

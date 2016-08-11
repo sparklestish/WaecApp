@@ -18,7 +18,7 @@
   
  <script type="text/javascript" src="../inappbrowser.js"></script>
  <script type="text/javascript" src="../notification.js"></script>
- <script type="text/javascript" src="../screenshot.js"></script>
+ 
     <script type="text/javascript" src="../scripts/jq.js"></script>
    
       <script type="text/javascript">
@@ -598,13 +598,7 @@ window.onclick = function(event) {
 
       
   		cordova.InAppBrowser.open('http://ghana.waecdirect.org/results.asp', '_blank', 'location=yes');
-      navigator.screenshot.save(function(error,res){
-        if(error){
-          console.error(error);
-        }else{
-          console.log('ok',res.filePath);
-        }
-      },'jpg',50);
+    
           });
 
  });

@@ -789,13 +789,7 @@ window.onclick = function(event) {
 
       
   		cordova.InAppBrowser.open('http://ghana.waecdirect.org/results.asp', '_blank', 'location=yes');
-      navigator.screenshot.save(function(error,res){
-        if(error){
-          console.error(error);
-        }else{
-          console.log('ok',res.filePath);
-        }
-      },'jpg',50);
+     
           });
 
  });
