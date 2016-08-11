@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.waecresultscenter.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>WaecResultsCenter</name>
+    <description>
+         A app top buy scratch cards and check wassce results instantly.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+         WAEC CENTER
+    </author>
+    <plugin name="org.apache.cordova.inappbrowser" source="npm" />
+    <plugin name="com.darktalker.cordova.screenshot" spec="0.1.0" source="pgb" />
+    <preference name="CrosswalkAnimatable" value="true" />
+    <content src="index.html" />
+    <icon src="www/icon.png"/>
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <!--<feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>-->
+</widget>

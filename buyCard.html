@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Buy Card</title>
+  <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="libs/assets/animate.css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="libs/assets/font-awesome/css/font-awesome.css" type="text/css" />
+  <link rel="stylesheet" href="libs/jquery/waves/dist/waves.css" type="text/css" />
+  <link rel="stylesheet" href="styles/material-design-icons.css" type="text/css" />
+
+  <link rel="stylesheet" href="libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="styles/font.css" type="text/css" />
+  <link rel="stylesheet" href="styles/app.css" type="text/css" />
+  <script src="scripts/modernizr.touch.js"></script>
+  <link href="styles/index.css" rel="stylesheet">
+ <link href="styles/mfb.css" rel="stylesheet">
+ <script type="text/javascript" src="cordova.js"></script>
+ <script type="text/javascript" src="scripts/jq.js"></script>
+    <script type="text/javascript">
+   
+    // Wait for device API libraries to load
+    function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+    function chkOnline()
+      {
+      //add your own functionalities, if user is online
+       
+      }
+      function chkOffline()
+      {
+      //add your own functionalities, if user is offline
+       window.location.href="noconnection.html";
+      }
+    // device APIs are available
+    function onDeviceReady() {
+        document.addEventListener("online",chkOnline,false);
+        document.addEventListener("offline",chkOffline,false);
+       
+    }
+  </script>
+    
+
+<script type="text/javascript" language="javascript">
+
+   var phonenum = window.location.search.substring(10);
+
+     $(document).ready(function() {
+
+          $.getJSON('http://wassce.envisiongh.net/userinfodisplay.php?phonenum='+phonenum, function(jd) {  
+          
+           //   $('#logged_in_user').val(jd.username);
+           // $('#user_email').val(jd.email);
+         // document.getElementById('user_email').value = jd.username;
+       
+       // alert(jd.fullname);
+         // $('#logged_in_user').html(jd.username);
+         // $('#user_email').html(jd.email);
+     
+         var newbuycard = document.getElementById('buy_card'); //or grab it by tagname etc
+         newbuycard.href="buyCard.html?phone="+jd.phone+"&country=ghana";
+
+          var newcheckresults = document.getElementById('check_results'); //or grab it by tagname etc
+         newcheckresults.href = "checkResults.html?phonenum="+jd.phone+"&country=ghana";
+
+
+
+          var contactusUrl = document.getElementById('contact_us'); //or grab it by tagname etc
+         contactusUrl.href = "contact.html?phonenum="+jd.phone+"&country=ghana";
+
+});
+        });
+
+
+
+
+   </script>
+</head>
+<body onload="onLoad();">
+
+<div class="app">
+ <!-- aside -->
+  <aside id="aside" class="app-aside modal fade folded" role="menu">
+    <div class="left">
+      <div class="box bg-white">
+        <div class="navbar md-whiteframe-z1 no-radius blue">
+            <!-- brand -->
+            <a class="navbar-brand">
+             
+              <img src="images/logo.png" alt="." style="max-height: 36px;">
+              <!-- <span class="hidden-folded m-l inline">Rogha2016</span> -->
+            </a>
+            <!-- / brand -->
+        </div>
+        <div class="box-row">
+          <div class="box-cell scrollable hover">
+            <div class="box-inner">
+              <div class="p hidden-folded blue-50" style="background-image:url(images/bg.png); background-size:cover">
+                <div class="rounded w-64 bg-white inline pos-rlt">
+                  <img src="images/a0.jpg" class="img-responsive rounded" id="user_profile_img">
+                </div>
+                <a class="block m-t-sm" ui-toggle-class="hide, show" target="#nav, #account">
+                  <span class="block font-bold" id="logged_in_user"></span>
+                  <span class="pull-right auto">
+                    <i class="fa inline fa-caret-down"></i>
+                    <i class="fa none fa-caret-up"></i>
+                  </span>
+                  <span id="user_email"></span>
+                </a>
+              </div>
+              <div id="nav">
+
+                <nav ui-nav>
+                  <ul class="nav">
+                    <li class="nav-header m-v-sm hidden-folded">
+                      Menu
+                    </li>
+                    <li>
+                      <a md-ink-ripple href="menu.html" id="menu">
+                        <span class="pull-right text-muted">
+                        </span>
+                        
+                        <i class="icon mdi-notification-folder-special i-20"></i>
+                        <span class="font-normal">Home</span>
+                      </a>
+                      
+                    </li>
+                    <li>
+                      <a md-ink-ripple href="buyCard.html" id="buy_card">
+                        <span class="pull-right text-muted">
+                         
+                        </span>
+                        <i class="icon mdi-social-public i-20"></i>
+                        <span class="font-normal">Buy Cards</span>
+                      </a>
+                     
+                    </li>
+                    <li>
+                      <a md-ink-ripple href="checkResults.html" id="check_results">
+                        <span class="pull-right text-muted">
+                          
+                        </span>
+                        <i class="icon mdi-social-whatshot i-20"></i>
+                        <span class="font-normal">Check WAEC Results</span>
+                      </a>
+                     
+                    </li>
+                  
+                   
+                   
+                  </ul>
+                </nav>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+        <nav>
+          <ul class="nav b-t b">
+            <li>
+              <a href="contact.html" id="contact_us" md-ink-ripple>
+                <i class="icon mdi-action-help i-20"></i>
+                <span>Help &amp; Feedback</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  <!-- / aside -->
+
+  <!-- content -->
+  <div id="content" class="app-content" role="main">
+    <div class="box">
+          <!-- Content Navbar -->
+    <div class="navbar md-whiteframe-z1 no-radius blue">
+      <!-- Open side - Naviation on mobile -->
+      <a md-ink-ripple  data-toggle="modal" data-target="#aside" class="navbar-item pull-left visible-xs visible-sm"><i class="mdi-navigation-menu i-24"></i></a>
+      <!-- / -->
+      <!-- Page title - Bind to $state's title -->
+      <div class="navbar-item pull-left h4">Buy WAEC Cards</div>
+      <!-- / -->
+      <!-- Common tools -->
+
+      <div class="pull-right" ui-view="navbar@"></div>
+      <!-- / -->
+      <!-- Search form -->
+     
+      <!-- / -->
+    </div>
+    <!-- Content -->
+
+      <div class="box-row">
+        <div class="box-cell">
+          <div class="box-inner padding">
+            
+
+  <div class="row">
+    <div class="col-sm-6" style="width: 100%;">
+      <!-- <div class="card">
+        <form>
+          <textarea class="form-control no-border p-md" rows="1" placeholder="Write something..."></textarea>
+        </form>
+        <div class="lt p">
+          <button md-ink-ripple class="md-btn md-raised pull-right p-h-md green">Post</button>
+          <ul class="nav nav-pills nav-sm">
+            <li><a href><i class="fa fa-camera"></i></a></li>
+            <li><a href><i class="fa fa-video-camera"></i></a></li>
+          </ul>
+        </div>
+      </div> -->
+     
+<form action="checkout.html" method="get">
+      <div class="row row-sm">
+        <div class="col-sm-3"  >
+          <div class="card">
+           
+           
+            <div class="item"  id="postimage" style="height: 950px;">
+             <div class="card-body" style="margin-bottom: -40px;">
+              <p id="postdescription">
+                <h4><b>WASSCE /BECE Scratch Card</b></h4>
+              </p>
+               
+   <div class="card-heading">
+    <h2>Please fill the empty feilds to continue to buy a card</h2>
+  </div>
+
+
+   <div class="col-sm-12">
+        <div class="md-form-group float-label">
+          <input class="md-input" name="name" type="text" id="name" size="19" placeholder="Full Name" autocomplete="off" required="required">
+             
+
+        </div>
+      </div>
+
+   <div class="col-sm-12">
+        <div class="md-form-group float-label">
+          <input class="md-input" name="phone" type="text" id="phone" size="19" maxlength="10" placeholder="Phone Number" autocomplete="off" required="required">
+             
+
+        </div>
+      </div>
+
+
+        <div class="col-sm-12">
+        <div class="md-form-group float-label">
+          <input class="md-input" name="email" type="email" id="email" size="19" placeholder="Email Address" autocomplete="off" required="required">
+             
+
+        </div>
+      </div>
+
+      <div class="m-b">
+      <input name="Submit" id="submit" type="submit" value="Submit"  class="md-btn md-raised pink p-h-md" style="padding: 10px 30px; background: rgba(245, 76, 63, 0.89);">
+      <input name="Clear" type="reset" id="Clear" value="Clear"  class="md-btn md-raised pink p-h-md"  style="padding: 10px 30px; background: rgba(245, 76, 63, 0.89);"></div>
+
+
+            </div>
+       
+            </div>
+           
+          </div>
+          </a>
+        </div>
+        </div>
+        </form>
+
+       <!--  <a href="" class="md-btn md-fab md-fab-bottom-right pos-fix teal"><i class="mdi-editor-mode-edit i-24"></i></a> -->
+      </div>
+      <div class="text-center m-b">
+          <i class="fa fa-circle-o-notch fa-spin text-lg text-muted-lt"></i>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      
+      <!-- <div class="card">
+        <div class="card-heading">
+          <h2 class="font-thin">Interesting People</h2>
+          <small>Follow your favorites</small>
+        </div>
+        <div class="card-tools">
+          <ul class="list-inline">
+            <li class="dropdown">
+              <a md-ink-ripple data-toggle="dropdown" class="md-btn md-flat md-btn-circle">
+                <i class="mdi-navigation-more-vert text-md"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-scale pull-right pull-up top text-color">
+                <li><a href>Action</a></li>
+                <li><a href>Another action</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-body">
+          <a href class="m-r-xs inline">
+            <img src="images/a4.jpg" class="w-40 img-circle">
+          </a>
+          <a href class="m-r-xs inline">
+            <img src="images/a5.jpg" class="w-40 img-circle">
+          </a>
+          <a href class="m-r-xs inline">
+            <img src="images/a6.jpg" class="w-40 img-circle">
+          </a>
+          <a href class="m-r-xs inline">
+            <img src="images/a7.jpg" class="w-40 img-circle">
+          </a>
+          <a class="btn btn-rounded btn-info">99+</a>
+        </div>
+      </div> -->
+      
+
+ 
+      </ul>
+    </div>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- / content -->
+
+
+    </div>
+  </div>
+
+ 
+    </div>
+  </div>
+
+
+</div>
+
+<script src="libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+<script src="libs/jquery/waves/dist/waves.js"></script>
+
+<script src="scripts/ui-load.js"></script>
+<script src="scripts/ui-jp.config.js"></script>
+<script src="scripts/ui-jp.js"></script>
+<script src="scripts/ui-nav.js"></script>
+<script src="scripts/ui-toggle.js"></script>
+<script src="scripts/ui-form.js"></script>
+<script src="scripts/ui-waves.js"></script>
+<script src="scripts/ui-client.js"></script>
+
+ <script src="scripts/mfb.js"></script>
+  <!-- endbuild -->
+  
+
+
+<script type="text/javascript">
+ $(document).ready(function()
+ {
+    //Login Function
+    $("#submit").click(function(){
+      
+//              $( "#loginform" ).click(function( event ) {
+//   event.preventDefault();
+ 
+// });
+    
+      var phone=$("#phone").val();
+      var email=$("#email").val();
+      var name=$("#name").val();
+      var dataString="name="+name+"&phone="+phone+"&email="+email;
+   
+      if($.trim(phone).length>0)
+    {
+      $.ajax({
+        type: "GET",
+        url: "http://envisiongh.net/wassce/register.php",
+        data: dataString,
+        crossDomain: true,
+        cache: false,
+        dataType:'json',
+        beforeSend: function(){ $("#submit").val('please wait...');},
+        success: function(data){
+          if(data.success == false) 
+                {  
+                   //  alert(dataString);
+            $(".arrow_box").css("display", "block");
+            $(".arrow_box").html('Unable to process request. please try again later');
+            //alert("Login error");
+            setTimeout(function() {
+            $('.arrow_box').fadeOut('slow');
+            }, 4000);
+            $("#submit").val('Submit');
+                } 
+                else { 
+            var URL = "checkout.html?phone="+phone;
+            setTimeout(function(){ window.location = URL; }, 2000);
+                      
+                    }  
+        }
+      });
+    }return false;
+
+    });
+ });
+ </script>
+</body>
+</html>
