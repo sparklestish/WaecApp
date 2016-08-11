@@ -19,7 +19,7 @@
 <script type="text/javascript">
     var url = window.location.pathname;
     var filename = url.substring(url.lastIndexOf('/')+1);
-    if(localStorage.login=="true" && filename == 'index.html'){
+    if(localStorage.login=="true" && filename == 'index-2.html'){
       window.location.href = "menu.html?phonenum="+localStorage.phone;
     }
     else if(localStorage.login=="false" && filename != 'login.html'){
@@ -31,8 +31,8 @@
 <div class="app" style="margin-bottom: -100px;">
   
 
-  <div class="center-block w-xxl w-auto-xs p-v-md" style="margin-bottom: -30px;">
-    <div class="navbar" style="margin-top:0px;">
+  <div class="center-block w-xxl w-auto-xs p-v-md" style="margin-bottom: -50px;">
+    <div class="navbar" style="margin-top:10px;">
       <div class="navbar-brand m-t-lg text-center">
        <img src="images/logo.png"  width="170px;" height="150px;">
        <!--  <span class="m-l inline">Materil</span> -->
@@ -41,16 +41,16 @@
 
        <div class="navbar" style="margin-top:70px; color: #ffffff;" >
       <div class="navbar-brand m-t-lg text-center">
-   <p style="font-weight: lighter;">Welcome To</p>
-   <p style="font-weight: bold; margin-top: -31px">WAEC Results Checker</p>
+   <p style="font-weight: lighter;">Select Your Country</p>
+   <p style="font-weight: bold; margin-top: -31px">To Create An Account</p>
        <!--  <span class="m-l inline">Materil</span> -->
       </div>
     </div>
 
-  <!--   <center>
+    <center>
 
-    <div style="margin-top:90px;">
-    <p style="color: #ffffff;"> Select Your Country </p>
+    <div style="margin-top:80px;">
+    <!-- <p style="color: #ffffff;"> Select Your Country </p> -->
      <a href="nigeria/signup.html?country=nigeria">
      <img src="images/nigeria.png" height="30px" width="30px" class="img-circle" style="margin-right: 15px;">
      </a>
@@ -58,14 +58,10 @@
     <img src="images/sierraleone.png" height="30px" width="30px" class="img-circle" style="margin-right: 15px;">
     <img src="images/gambia.png" height="30px" width="30px" class="img-circle" style="margin-right: 15px;">
     </div>
-    </center> -->
+    </center>
 
-    <div class="p-v-lg text-center" style="color: #ffffff; margin-top:30px;">
-      <div class="m-b"><a href="index-2.html"><button ui-sref="access.forgot-password" class="md-btn" style="background: #FF9800; padding: 7px 40px; margin-bottom: -15px;"> Get Started </button></a></div>
-       <div class="p-v-lg text-center" style="color: #ffffff; margin-top: 5px;">
-    
-     <div class="m-b"><a href="login.html"><button ui-sref="access.forgot-password" class="md-btn" style="background: #ff0000; padding: 7px 64px;"> Login </button></a></div>
-    </div>
+    <div class="p-v-lg text-center" style="color: #ffffff; margin-top:40px;">
+     
       <div style="color: rgba(249, 249, 249, 0.91);">Powered by E-Select Ghana &reg;</div>
     </div>
   </div>
