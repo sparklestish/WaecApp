@@ -133,43 +133,109 @@ var country= getQueryVariable("country");
    </script>
 
 
-<!--<script type="text/javascript" language="javascript">
+<script type="text/javascript" language="javascript">
 
-   var phonenum = window.location.search.substring(10);
-
+   //var phonenum = window.location.search.substring(10);
      $(document).ready(function() {
 
-          $.getJSON('http://wassce.envisiongh.net/cardsinfo.php', function(jd) {  
+          $.getJSON('http://waecresultschecker.com/mobile/cardinfo.php', function(cd) {  
           
-           //   $('#logged_in_user').val(jd.username);
-           // $('#user_email').val(jd.email);
-         // document.getElementById('user_email').value = jd.username;
+         var pfdb = cd.fee;
+
+        var a = document.getElementById('unitprice').value = cd.fee;
+        var b =document.getElementById('unitprice2').value = cd.fee;
+        var c =document.getElementById('unitprice3').value = cd.fee;
+        var d =document.getElementById('unitprice5').value = cd.fee;
+        var e = document.getElementById('unitprice10').value = cd.fee;
+
+         var q = document.getElementById('quantity').value;
+        var q2 =document.getElementById('quantity2').value;
+        var q3 =document.getElementById('quantity3').value;
+        var q5 =document.getElementById('quantity5').value;
+        var q10 = document.getElementById('quantity10').value;
+
+        var totam = a*q;
+        var totam2 = a*q2;
+        var totam3 = a*q3;
+        var totam5 = a*q5;
+        var totam10 = a*q10;
        
        // alert(jd.fullname);
-         $('#bamount').html(jd.fee);
-
-     // var menucard = document.getElementById('menu'); //or grab it by tagname etc
-     //     menucard.href="menu.html?phone="+jd.phone+"&country=ghana";
-         
-     
-     //     var newbuycard = document.getElementById('buy_card'); //or grab it by tagname etc
-     //     newbuycard.href="checkout.html?phone="+jd.phone+"&country=ghana";
-
-     //      var newcheckresults = document.getElementById('check_results'); //or grab it by tagname etc
-     //     newcheckresults.href = "checkResults.html?phonenum="+jd.phone+"&country=ghana";
+         $('#bamount').html(totam);
+         $('#bamount2').html(totam2);
+         $('#bamount3').html(totam3);
+         $('#bamount5').html(totam5);
+         $('#bamount10').html(totam10);
 
 
+        // document.getElementById('unitprice').value = totam;
+        // document.getElementById('unitprice2').value = totam2;
+        // document.getElementById('unitprice3').value = totam3;
+        // document.getElementById('unitprice5').value = totam5;
+        // document.getElementById('unitprice10').value = totam10;
 
-     //      var contactusUrl = document.getElementById('contact_us'); //or grab it by tagname etc
-     //     contactusUrl.href = "contact.html?phonenum="+jd.phone+"&country=ghana";
-
+    
 });
+
         });
 
 
 
+   </script>
 
-   </script>-->
+
+
+
+
+   <script type="text/javascript" language="javascript">
+
+   //var phonenum = window.location.search.substring(10);
+   
+     $(document).ready(function() {
+        var cardtype = "1";
+         if($.trim(cardtype).length>0)
+    {
+       $.ajax({
+        type: "GET",
+        url: "http://waecresultschecker.com/mobile/cronJob.php?card_type="+cardtype,
+        data: cardtype,
+        crossDomain: true,
+        cache: false,
+        dataType:'json',
+        beforeSend: function(){ $("#loader").val('Loading, please wait...');},
+        success: function(data){
+          if(data.success == false) 
+                {  
+                   //  alert(dataString);
+            $(".arrow_box").css("display", "block");
+            $(".arrow_box").html('There are no placement cards available at this time. Please try again later');
+            //alert("Login error");
+
+             $('#onecard').prop('disabled', true);
+             $('#twocards').prop('disabled', true);
+             $('#threecards').prop('disabled', true);
+             $('#fivecards').prop('disabled', true);
+             $('#tencards').prop('disabled', true);
+
+
+            setTimeout(function() {
+            $('.arrow_box').fadeOut('slow');
+            }, 1500000);
+          
+                }
+                else { 
+              $(".arrow_box").css("display", "none");
+                      
+                    }  
+        }
+      });
+        };
+        });
+
+
+
+//alert(pfdb);
+   </script>
 
       <!-- Validation of Text Feild For Phone Numbers-->
       <!-- Validation of Text Feild For Phone Numbers-->
@@ -470,6 +536,10 @@ window.onclick = function(event) {
   <div class="card-heading" >
     <h6>Select From the List Below the card type you want to purchase</h6>
   </div>
+
+  <div class="arrow_box" style="display:none; margin-bottom: 20px; padding-left: 10px; padding-right: 10px;">
+      dfsbsfgbsgfsbbgfs
+    </div>
   </div>
       <div class="col-sm-6" style="width: 100%;">
 
@@ -481,7 +551,7 @@ window.onclick = function(event) {
                   
                   <img class="product-img" src="images/waecscratchcard.jpg" style="padding-bottom: 15px;" />
                   <p class="product-name"> <b>WAEC RESULTS CHECKER CARD</b></p>
-                  <p nclass="product-price"><img src="images/price-tag.png" width="20px" height="20px" style="margin-right: 5px;"><span id="bamount">GH¢ 8.00 </span> <span style="float: right; padding-right: 10px;">Quantity: 1 Card</span></p>
+                  <p nclass="product-price"><img src="images/price-tag.png" width="20px" height="20px" style="margin-right: 5px;">GH¢ <span id="bamount">GH¢ 8.00 </span> <span style="float: right; padding-right: 10px;">Quantity: 1 Card</span></p>
                </div>
                  <input class="md-input" type="hidden" name="unitprice" id="unitprice" value="2.00" >
                  <input class="md-input" type="hidden" name="name" id="name" value="WAEC RESULTS CARD" >
@@ -512,7 +582,7 @@ window.onclick = function(event) {
                   
                   <img class="product-img" src="images/waecscratchcard.jpg" style="padding-bottom: 15px;" />
                   <p class="product-name"> <b>WAEC RESULTS CHECKER CARD</b></p>
-                  <p nclass="product-price"><img src="images/price-tag.png" width="20px" height="20px" style="margin-right: 5px;"><span id="bamount">GH¢ 16.00 </span> <span style="float: right; padding-right: 10px;">Quantity: 2 Cards</span></p>
+                  <p nclass="product-price"><img src="images/price-tag.png" width="20px" height="20px" style="margin-right: 5px;">GH¢ <span id="bamount2">GH¢ 16.00 </span> <span style="float: right; padding-right: 10px;">Quantity: 2 Cards</span></p>
                </div>
                  <input class="md-input" type="hidden" name="unitprice2" id="unitprice2" value="2.00" >
                  <input class="md-input" type="hidden" name="name2" id="name2" value="WAEC RESULTS CARD" >
@@ -543,7 +613,7 @@ window.onclick = function(event) {
                   
                   <img class="product-img" src="images/waecscratchcard.jpg" style="padding-bottom: 15px;" />
                   <p class="product-name"> <b>WAEC RESULTS CHECKER CARD</b></p>
-                  <p nclass="product-price"><img src="images/price-tag.png" width="20px" height="20px" style="margin-right: 5px;"><span id="bamount">GH¢ 24.00 </span> <span style="float: right; padding-right: 10px;">Quantity: 3 Cards</span></p>
+                  <p nclass="product-price"><img src="images/price-tag.png" width="20px" height="20px" style="margin-right: 5px;">GH¢ <span id="bamount3">GH¢ 24.00 </span> <span style="float: right; padding-right: 10px;">Quantity: 3 Cards</span></p>
                </div>
                  <input class="md-input" type="hidden" name="unitprice3" id="unitprice3" value="8.00" >
                  <input class="md-input" type="hidden" name="name3" id="name3" value="WAEC RESULTS CARD" >
@@ -579,7 +649,7 @@ window.onclick = function(event) {
                   
                   <img class="product-img" src="images/waecscratchcard.jpg" style="padding-bottom: 15px;" />
                   <p class="product-name"> <b>WAEC RESULTS CHECKER CARD</b></p>
-                  <p nclass="product-price"><img src="images/price-tag.png" width="20px" height="20px" style="margin-right: 5px;">GH¢ 40.00 <span style="float: right; padding-right: 10px;">Quantity: 5 Cards</span></p>
+                  <p nclass="product-price"><img src="images/price-tag.png" width="20px" height="20px" style="margin-right: 5px;">GH¢ <span id="bamount5">GH¢ 40.00</span> <span style="float: right; padding-right: 10px;">Quantity: 5 Cards</span></p>
                </div>
                  <input class="md-input" type="hidden" name="unitprice5" id="unitprice5" value="8.00" >
                  <input class="md-input" type="hidden" name="name5" id="name5" value="WAEC RESULTS CARD" >
@@ -612,7 +682,7 @@ window.onclick = function(event) {
                   
                   <img class="product-img" src="images/waecscratchcard.jpg" style="padding-bottom: 15px;" />
                   <p class="product-name"> <b>WAEC RESULTS CHECKER CARD</b></p>
-                  <p nclass="product-price"><img src="images/price-tag.png" width="20px" height="20px" style="margin-right: 5px;">GH¢ 80.00 <span style="float: right; padding-right: 10px;">Quantity: 10 Cards</span></p>
+                  <p nclass="product-price"><img src="images/price-tag.png" width="20px" height="20px" style="margin-right: 5px;">GH¢ <span id="bamount10">GH¢ 80.00</span> <span style="float: right; padding-right: 10px;">Quantity: 10 Cards</span></p>
                </div>
                  <input class="md-input" type="hidden" name="unitprice10" id="unitprice10" value="8.00" >
                  <input class="md-input" type="hidden" name="name10" id="name10" value="WAEC RESULTS CARD" >
