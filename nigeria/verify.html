@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="../libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
   <link rel="stylesheet" href="../styles/font.css" type="text/css" />
   <link rel="stylesheet" href="../styles/app.css" type="text/css" />
-  <script type="text/javascript" src="../cordova.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="../scripts/jq.js"></script>
     <script type="text/javascript">
     var url = window.location.pathname;
@@ -169,12 +169,13 @@
       <div class="col-sm-6">
         <div class="md-form-group float-label">
           <select class="md-input">
-              <option selected="selected"> (+233)  Ghana</option>
+              <option selected="selected"> (+234)  Nigeria</option>
           </select>
           
         </div>
       </div>
       <div class="col-sm-6">
+      <input type="hidden" id="countrycode" value="234">
         <div class="md-form-group float-label">
           <input class="md-input" type="number" name="phonenum" id="phonenum"  onkeypress="return isNumberKey(event)" onKeyDown="limitText(this,10);" 
 onKeyUp="limitText(this,10);" placeholder="your 10 digit phone number" required>
@@ -187,7 +188,7 @@ onKeyUp="limitText(this,10);" placeholder="your 10 digit phone number" required>
       <div class="m-b">
       <input type="submit" value="Verify" class="md-btn md-raised pink p-h-md" id="verify" style="padding: 10px 80px; background: rgba(245, 76, 63, 0.89);"></div>
       <br />
-      <div><a href="login.html"> Already have a code? </a></div>
+      <div><a href="login.html"> Login to your account? </a></div>
     </div>
     </form>
     </div>
@@ -230,16 +231,19 @@ onKeyUp="limitText(this,10);" placeholder="your 10 digit phone number" required>
 //   event.preventDefault();
  
 // });
-    
+      var countrycode=$("#countrycode").val();
       var phone=$("#phonenum").val();
       var dataString="phonenum="+phone;
+      var phonecombination = countrycode+phone;
+      var phonecombinationurl ="phonenumber="+countrycode+phone;
+      // alert(phonecombination);
    
       if($.trim(phone).length>0)
     {
       $.ajax({
         type: "GET",
         url: "http://waecresultschecker.com/mobile/verify.php",
-        data: dataString,
+        data: phonecombinationurl,
         crossDomain: true,
         cache: false,
         dataType:'json',
@@ -267,7 +271,7 @@ onKeyUp="limitText(this,10);" placeholder="your 10 digit phone number" required>
             $("#verify").val('Verify');
                 } 
                 else { 
-            var URL = "activate.html?phonenum="+phone;
+            var URL = "activate.html?phonenum="+phonecombination;
             setTimeout(function(){ window.location = URL; }, 2000);
                       
                     }  
